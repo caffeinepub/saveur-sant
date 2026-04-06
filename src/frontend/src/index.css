@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+
+    /* Saveur Santé Brand Palette */
+    /* Warm cream page background: #F3EEDF → oklch(0.944 0.022 85) */
+    --background: 0.944 0.022 85;
+    /* Near-black headline text: #1E1E1E → oklch(0.145 0 0) */
+    --foreground: 0.145 0 0;
+    /* White card: #FFFFFF */
+    --card: 1 0 0;
+    --card-foreground: 0.145 0 0;
+    --popover: 1 0 0;
+    --popover-foreground: 0.145 0 0;
+    /* Forest green primary: #1F4A3A → oklch(0.36 0.082 163) */
+    --primary: 0.36 0.082 163;
+    --primary-foreground: 1 0 0;
+    /* Slightly lighter cream secondary */
+    --secondary: 0.96 0.015 85;
+    --secondary-foreground: 0.36 0.082 163;
+    --muted: 0.96 0.012 80;
+    /* Warm gray muted text: #7A746B → oklch(0.56 0.016 65) */
+    --muted-foreground: 0.56 0.016 65;
+    --accent: 0.92 0.03 80;
+    --accent-foreground: 0.36 0.082 163;
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 1 0 0;
+    /* Light warm gray borders: #E6DECF → oklch(0.9 0.02 80) */
+    --border: 0.9 0.02 80;
+    --input: 0.9 0.02 80;
+    --ring: 0.36 0.082 163;
+    --chart-1: 0.646 0.222 41.116;
+    --chart-2: 0.6 0.118 184.704;
+    --chart-3: 0.398 0.07 227.392;
+    --chart-4: 0.828 0.189 84.429;
+    --chart-5: 0.769 0.188 70.08;
+    --sidebar: 1 0 0;
+    --sidebar-foreground: 0.145 0 0;
+    --sidebar-primary: 0.36 0.082 163;
+    --sidebar-primary-foreground: 1 0 0;
+    --sidebar-accent: 0.96 0.015 85;
+    --sidebar-accent-foreground: 0.36 0.082 163;
+    --sidebar-border: 0.9 0.02 80;
+    --sidebar-ring: 0.36 0.082 163;
+
+    /* Custom brand tokens */
+    /* Forest green: #1F4A3A */
+    --brand-green: 0.36 0.082 163;
+    /* Darker footer green: #173B2F */
+    --brand-green-dark: 0.3 0.075 163;
+    /* Muted gold: #B59C5A → oklch(0.72 0.09 75) */
+    --brand-gold: 0.72 0.09 75;
+    /* Cream background: #F3EEDF */
+    --brand-cream: oklch(0.944 0.022 85);
+    /* Slightly darker cream: #EDE6D2 */
+    --brand-cream-dark: oklch(0.92 0.025 80);
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-family: "Inter", system-ui, sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Playfair Display", Georgia, serif;
+  }
+}
+
+@layer components {
+  .font-serif-heading {
+    font-family: "Playfair Display", Georgia, serif;
+  }
+
+  .font-sans-body {
+    font-family: "Inter", system-ui, sans-serif;
+  }
+
+  /* Custom star rating colors */
+  .star-gold {
+    color: #c9a24a;
+  }
+
+  /* Scrollbar styling */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
