@@ -3,7 +3,7 @@ import { Bot, MessageCircle, Send, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { useLanguage } from "../contexts/LanguageContext";
-import { useChatbot } from "../hooks/useQueries";
+import { getChatbotReply } from "../utils/chatbotEngine";
 
 interface Message {
   id: string;
@@ -12,15 +12,24 @@ interface Message {
 }
 
 export default function ChatWidget() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [open, setOpen] = useState(false);
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState<Message[]>([]);
+  const [isPending, setIsPending] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
-  const chatbot = useChatbot();
-  const isPending = chatbot.isPending;
 
-  // Initialize with greeting
+  // Reset and re-greet when language changes
+  // biome-ignore lint/correctness/useExhaustiveDependencies: intentional reset only on language change
+  useEffect(() => {
+    if (open) {
+      setMessages([
+        { id: `greeting-${language}`, role: "bot", text: t("chat.greeting") },
+      ]);
+    }
+  }, [language]);
+
+  // Initialize with greeting when first opened
   useEffect(() => {
     if (open && messages.length === 0) {
       setMessages([{ id: "greeting", role: "bot", text: t("chat.greeting") }]);
@@ -44,23 +53,19 @@ export default function ChatWidget() {
     };
     setMessages((prev) => [...prev, userMsg]);
     setInput("");
+    setIsPending(true);
 
-    try {
-      const reply = await chatbot.mutateAsync(trimmed);
-      const botMsg: Message = {
-        id: `b-${Date.now()}`,
-        role: "bot",
-        text: reply,
-      };
-      setMessages((prev) => [...prev, botMsg]);
-    } catch {
-      const errMsg: Message = {
-        id: `e-${Date.now()}`,
-        role: "bot",
-        text: "Désolé, une erreur s'est produite. Veuillez réessayer.",
-      };
-      setMessages((prev) => [...prev, errMsg]);
-    }
+    // Small delay to simulate thinking
+    await new Promise((resolve) => setTimeout(resolve, 400));
+
+    const reply = getChatbotReply(trimmed);
+    const botMsg: Message = {
+      id: `b-${Date.now()}`,
+      role: "bot",
+      text: reply,
+    };
+    setMessages((prev) => [...prev, botMsg]);
+    setIsPending(false);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
@@ -125,7 +130,7 @@ export default function ChatWidget() {
                   }`}
                 >
                   <div
-                    className="max-w-[80%] px-3 py-2 rounded-xl text-sm font-sans leading-relaxed"
+                    className="max-w-[80%] px-3 py-2 rounded-xl text-sm font-sans leading-relaxed whitespace-pre-wrap"
                     style={{
                       backgroundColor:
                         msg.role === "user" ? "oklch(0.36 0.082 163)" : "white",
