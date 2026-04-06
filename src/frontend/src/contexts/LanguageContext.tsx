@@ -111,6 +111,30 @@ const translations = {
     "about.card3.title": "Pour Tous",
     "about.card3.desc":
       "Options végétariennes et non-végétariennes pour s'adapter à vos préférences.",
+
+    // Personalized Plan Section
+    "personal.title": "Votre Plan Personnalisé",
+    "personal.subtitle":
+      "Entrez votre taille et votre poids pour obtenir un plan adapté",
+    "personal.unit.metric": "Métrique",
+    "personal.unit.imperial": "Impérial",
+    "personal.height": "Taille",
+    "personal.height.cm": "Taille (cm)",
+    "personal.height.ft": "Pieds",
+    "personal.height.in": "Pouces",
+    "personal.weight": "Poids",
+    "personal.weight.kg": "Poids (kg)",
+    "personal.weight.lbs": "Poids (lbs)",
+    "personal.calculate": "Calculer mon IMC",
+    "personal.bmi.result": "Votre IMC",
+    "personal.bmi.underweight": "Insuffisance pondérale",
+    "personal.bmi.normal": "Poids normal",
+    "personal.bmi.overweight": "Surpoids",
+    "personal.bmi.obese": "Obèse",
+    "personal.recommendation": "Plan recommandé",
+    "personal.recommendation.desc":
+      "Basé sur votre profil, nous vous recommandons ce plan :",
+    "personal.view.plan": "Voir le Plan",
   },
   en: {
     // Navigation
@@ -213,6 +237,29 @@ const translations = {
     "about.card3.title": "For Everyone",
     "about.card3.desc":
       "Vegetarian and non-vegetarian options to suit your preferences.",
+
+    // Personalized Plan Section
+    "personal.title": "Your Personalized Plan",
+    "personal.subtitle": "Enter your height and weight to get a tailored plan",
+    "personal.unit.metric": "Metric",
+    "personal.unit.imperial": "Imperial",
+    "personal.height": "Height",
+    "personal.height.cm": "Height (cm)",
+    "personal.height.ft": "Feet",
+    "personal.height.in": "Inches",
+    "personal.weight": "Weight",
+    "personal.weight.kg": "Weight (kg)",
+    "personal.weight.lbs": "Weight (lbs)",
+    "personal.calculate": "Calculate my BMI",
+    "personal.bmi.result": "Your BMI",
+    "personal.bmi.underweight": "Underweight",
+    "personal.bmi.normal": "Normal weight",
+    "personal.bmi.overweight": "Overweight",
+    "personal.bmi.obese": "Obese",
+    "personal.recommendation": "Recommended Plan",
+    "personal.recommendation.desc":
+      "Based on your profile, we recommend this plan:",
+    "personal.view.plan": "View Plan",
   },
 };
 

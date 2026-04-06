@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
 import MealPlansSection from "./components/MealPlansSection";
+import PersonalizedPlanSection from "./components/PersonalizedPlanSection";
 import RecipesSection from "./components/RecipesSection";
 import { LanguageProvider } from "./contexts/LanguageContext";
 
@@ -14,6 +15,7 @@ export default function App() {
         <Header />
         <main className="flex-1">
           <HeroSection />
+          <PersonalizedPlanSection />
           <MealPlansSection />
           <RecipesSection />
           <AboutSection />
